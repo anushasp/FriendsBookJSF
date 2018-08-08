@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Logout</title>
+<style>
+div
+{
+padding:0;
+}
+	.header
+{
+height: 100px;
+width:100%;
+background-color: #1874CD;
+}
+.contentarea
+{
+padding-top:15px;
+text-align:center;
+background-color:#E0FFFF;
+height: 100vh;
+}
+p
+{
+font-family: Helvetica;
+}
+	</style>
+
+    </h:head>
+    <h:body>
+
+        <div class="header">
+        </div>
+        <div class="contentarea">
+            <h2>#{login.theLoginAccount.signOut()}</h2>
+        <h:form>
+
+            <h:commandButton id="return" value="Welcome Page"
+                             action="index.xhtml" />
+
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

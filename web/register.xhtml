@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Account</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+	<style>
+div
+{
+padding:0;
+}
+	.header
+{
+height: 100px;
+width:100%;
+background-color: #1874CD;
+}
+.contentarea
+{
+padding-top:15px;
+text-align:center;
+background-color:#E0FFFF;
+height: 100vh;
+}
+p
+{
+font-family: Helvetica;
+}
+	</style>
+
+    </h:head>
+    <h:body>
+<div class="header">
+			</div>
+			<div class="contentarea">
+        <h:form>
+            <h3>Create a new online access account!</h3>
+                 
+            <p>Please enter your Name:<br></br>
+                <h:inputText id="name" required ="true" 
+                             requiredMessage="The name field cannot be empty"
+                        title="Please enter your Social Security Number"
+                        value="#{registration.name}">
+                </h:inputText>
+            </p>
+            
+            <p>Please Select  your Gender:<br></br>
+                <h:selectOneRadio value="#{registration.gender}">
+                        <f:selectItem itemValue="Male" itemLabel="Male" />
+                        <f:selectItem itemValue="Female" itemLabel="Female" />
+                        <f:selectItem itemValue="other" itemLabel="other" />
+                </h:selectOneRadio>
+            </p>
+            
+            <p>Please enter your userID:<br></br>
+                <h:inputText id="userID" required ="true" 
+                             requiredMessage="The userID field cannot be empty"
+                        title="Please enter your userID"
+                        value="#{registration.userID}"
+                        validatorMessage="The length of your selected 
+                        ID must be between 5 and 20.">
+                    <f:validateLength maximum="20" minimum="5" />
+                </h:inputText>
+            </p>
+            
+            <p>Please enter your selected password:<br></br>
+                <h:inputText id="password" required ="true" 
+                          requiredMessage="The password field cannot be empty"
+                        title="Please enter your password"
+                        value="#{registration.password}"
+                        validatorMessage="The length of your 
+                        password must be between 5 and 20.">
+                    <f:validateLength maximum="20" minimum="5" />
+                </h:inputText>
+            </p>
+           
+            <p>Please enter your School:<br></br>
+           <h:inputText id="school" 
+                        title="Please enter your school"
+                        value="#{registration.school}">
+            </h:inputText>
+            </p>
+             
+            <p>Please enter your Birth Date:<br></br>
+            <h:inputText id="bday" 
+                        title="Please enter your bday"
+                        value="#{registration.bday}">
+             </h:inputText>
+            </p>
+            <p>
+                <h:commandButton id="submit" value="Register"
+                                 action="confirmregister.xhtml" />
+            </p>
+            &nbsp;
+           
+        </h:form>
+</div>
+    </h:body>
+
+</html>
+

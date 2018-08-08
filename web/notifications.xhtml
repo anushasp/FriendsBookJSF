@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Friends</title>
+<style>
+div
+{
+padding:0;
+}
+	.header
+{
+height: 100px;
+width:100%;
+background-color: #1874CD;
+}
+.contentarea
+{
+padding-top:15px;
+text-align:center;
+background-color:#E0FFFF;
+height: 100vh;
+}
+p
+{
+font-family: Helvetica;
+}
+	</style>
+    </h:head>
+    <h:body>
+      <div class="header">
+			</div>
+			<div class="contentarea">
+       <h:form>
+               
+              <h:commandButton id="Home" value="Home Page"  action="home.xhtml"/>
+                <h2>Check Notifications  #{login.theLoginAccount.DisplayNotfications()}  <h:graphicImage value="icons8-google-alerts-24.png" /></h2>
+                <h:outputText value="New Notifications:" escape="false" /> 
+                &nbsp;
+                <h:outputText value="#{login.theLoginAccount.notifcount}" escape="false" style="font-weight:bold"/> 
+                
+                <br></br>
+                <br></br>
+                
+                
+                <ui:repeat value="#{login.theLoginAccount.notitems}" var="notifitem">
+
+                    <h:outputText value="#{notifitem.notif}"/> &nbsp;
+                    <h:commandButton   rendered="#{notifitem.type == 1}" id="reply"  value="Reply" action ="#{login.theLoginAccount.Accept()}">
+                                      
+                        <f:setPropertyActionListener target="#{login.theLoginAccount.notifitem}" value="#{notifitem}"/>
+                    </h:commandButton>
+                    <h:commandButton   rendered="#{notifitem.type == 1}" id="ignore"  value="Ignore" action ="#{login.theLoginAccount.IgnoreMessage()}"
+                                      onclick="alert('Ignored Message ')">
+                    <f:setPropertyActionListener target="#{login.theLoginAccount.notifitem}" value="#{notifitem}"/>
+                    </h:commandButton>
+                    
+                    <h:commandButton   rendered="#{notifitem.type == 0}" id="accept"  value="Accept"  action ="#{login.theLoginAccount.AcceptFriendRequest()}"
+                                      onclick="alert('Accepted Friend Request ')">
+                      <f:setPropertyActionListener target="#{login.theLoginAccount.notifitem}" value="#{notifitem}"/>                             
+                    </h:commandButton>
+                   
+                    <h:commandButton   rendered="#{notifitem.type == 0}" id="reject"  value="Reject" action ="#{login.theLoginAccount.RejectFriendRequest()}"
+                                       onclick="alert('Rejected Friend request')">
+                    <f:setPropertyActionListener target="#{login.theLoginAccount.notifitem}" value="#{notifitem}"/>
+                    </h:commandButton>
+                    <br></br>
+                </ui:repeat>
+                
+                <h:inputText id="msgreply" 
+                             autocomplete="off"
+                             value="#{login.theLoginAccount.replymessg}" 
+                             rendered="#{login.theLoginAccount.ifaccept}">
+                </h:inputText>
+
+                <h:commandButton   rendered="#{login.theLoginAccount.ifaccept}" id="submit"  value="send" action ="#{login.theLoginAccount.ReplyMessage()}">
+                    </h:commandButton>
+        </h:form>
+       <br></br>
+        
+      
+</div>
+    </h:body>
+</html>
+
